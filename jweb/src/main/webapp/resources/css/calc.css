@@ -6,14 +6,15 @@
 #container{
 	width: 800px;
 	padding : 10px;
-	margin: 0 auto;
+	margin: 0 auto
 	border : 1px solid #555;
 	text-align: center;
-	background : skyblue;
+	background : black;
+	color : #fff;
 }
 
 input[type = "submit"],
-input[type = "reset"] {background : #ddd; border : none;} 
+input[type = "reset"] {background : #fff; border : none; } 
 
 input[type = "submit"]:hover,
 input[type = "reset"]:hover {background : #fff; cursor : pointer;}
