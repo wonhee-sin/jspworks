@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+*{
+     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+     box-sizing: border-box;
+     outline: none;
+}
+
+#container {width: 800px; margin: 0 auto; text-align: center;}
