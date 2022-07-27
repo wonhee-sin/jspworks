@@ -155,7 +155,7 @@
       
       
       <Context docBase="C:\\dev\\jspworks\\jweb2\\src\\main\\webapp\\upload" path="/jweb2/upload"/>
-      <Context docBase="addrBook" path="/addrBook" reloadable="true" source="org.eclipse.jst.jee.server:addrBook"/></Host>
+      <Context docBase="addrBook" path="/addrBook" reloadable="true" source="org.eclipse.jst.jee.server:addrBook"/><Context docBase="jweb2" path="/jweb2" reloadable="true" source="org.eclipse.jst.jee.server:jweb2"/></Host>
     </Engine>
   </Service>
 </Server>

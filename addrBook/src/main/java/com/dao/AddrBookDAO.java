@@ -14,7 +14,6 @@ public class AddrBookDAO {
 	public void addAddress(AddrBook addrBook) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		
 		try {
 			conn = JDBCUtil.getConnection();
@@ -108,5 +107,53 @@ public class AddrBookDAO {
 
 	}
 	
+	public AddrBook getOne(int num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		AddrBook addrBook = new AddrBook();
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "SELECT * FROM t_address WHERE num = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				addrBook.setNum(rs.getInt("num"));
+				addrBook.setUsername(rs.getString("username"));
+				addrBook.setTel(rs.getString("tel"));
+				addrBook.setEmail(rs.getString("email"));
+				addrBook.setGender(rs.getString("gender"));
+				addrBook.setJoinDate(rs.getDate("joinDate"));
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(conn, pstmt, rs);
+			}
+			return addrBook;
+		}
+	
+	public void updateAddress(AddrBook addrBook) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "UPDATE t_address SET username = ?, tel = ?, email = ?,"
+		          +  "gender = ? WHERE num = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, addrBook.getUsername());
+			pstmt.setString(2, addrBook.getTel());
+			pstmt.setString(3, addrBook.getEmail());
+			pstmt.setString(4, addrBook.getGender());
+			pstmt.setInt(5, addrBook.getNum());
+			pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
 	
 }
