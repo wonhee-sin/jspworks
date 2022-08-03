@@ -13,11 +13,13 @@
 	<fmt:setBundle basename="com.bundle.message" />
 	<p>제 목 : <fmt:message key="title" />
 	<p>이 름 : <fmt:message key="username" />
+	<p>비밀번호 : <fmt:message key="password" />
 	
 	<p>--- 영문 로케일 ---
 	<fmt:setLocale value="en" />
 	<fmt:setBundle basename="com.bundle.message_en" />
 	<p>제 목 : <fmt:message key="title" />
 	<p>이 름 : <fmt:message key="username" />
+	<p>비밀번호 : <fmt:message key="password" />
 </body>
 </html>

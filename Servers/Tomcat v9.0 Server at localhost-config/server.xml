@@ -155,7 +155,7 @@
       
       
       
-      <Context docBase="jweb" path="/jweb" reloadable="true" source="org.eclipse.jst.jee.server:jweb"/></Host>
+      <Context docBase="MemberBoard1" path="/" reloadable="true" source="org.eclipse.jst.jee.server:MemberBoard1"/></Host>
     </Engine>
   </Service>
 </Server>

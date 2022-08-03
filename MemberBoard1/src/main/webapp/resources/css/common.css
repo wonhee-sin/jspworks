@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* 공통 */
+* {box-sizing: border-box; outline: none;}
+li {list-style: none;}
+a {text-decoration: none; color: #000;}
+input[type=text],[type=password] {width:200px; height:25px}
+select {width: 50px; height: 30px; text-align: center;}
+
+/* navbar 스타일 */
+nav {margin-top: 20px; text-align: right; margin-right: 70px}
+nav ul li {display: inline-block; margin: 10px; border-top: 3px solid #222;
+		padding: 10px 15px;}
+
+/* container */
+#container{width: 100%; margin: 0 auto; text-align: center;}
+.title {height: 130px; background : beige; line-height: 130px;
+	margin-bottom: 20px;}
+h1 {font-size: 48px;}
+
+footer{margin-left:15%; margin-top: 10%;}
+
+/* table 스타일 */
+.tbl {width: 450px; margin: 0 auto;}
+.tbl, td {border: 1px solid #ccc; border-collapse: collapse; padding: 10px}
+.tbl_list {width: 700px; margin: 0 auto;}
+.tbl_list, th, td {border: 1px solid #ccc; border-collapse: collapse;
+		padding: 10px; text-align: center;}
+.tbl_list thead {background: #eee;}
