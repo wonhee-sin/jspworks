@@ -100,6 +100,53 @@ public class MemberDAO {
 
 	}
 	
+	//나의 정보
+	public Member getMember(String memberid) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Member member = new Member();
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "SELECT * FROM t_member WHERE memberid=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberid);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				member.setMemberid(rs.getString("memberid"));
+				member.setPasswd(rs.getString("passwd"));
+				member.setName(rs.getString("name"));
+				member.setGender(rs.getString("gender"));
+				member.setJoinDate(rs.getDate("joindate"));
+			}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				JDBCUtil.close(conn, pstmt, rs);
+			}
+			
+		return member;
+		
+	}
+	
+	public void memberUpdate(Member member) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try{
+			conn = JDBCUtil.getConnection();
+			String sql = "UPDATE t_member SET passwd=?, name=? WHERE memberid=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getPasswd());
+			pstmt.setString(2, member.getName());
+			pstmt.setString(3, member.getMemberid());
+			pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
+	
 	//아이디 체크
 	public boolean checkId(String memberid) {
 		Connection conn = null;

@@ -11,7 +11,7 @@
 	<jsp:include page="./menu.jsp"/>
 	<div id="container">
 		<div class="title">
-			<h1>Welcome to my community....</h1>
+			<h1>Welcome to my community...</h1>
 		</div>
 		<div>
 			<img src="./resources/images/cat2.jpg" alt="고양이" width="38%">
