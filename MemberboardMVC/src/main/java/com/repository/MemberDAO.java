@@ -147,6 +147,29 @@ public class MemberDAO {
 		}
 	}
 	
+	//이름 가져오기
+	public String getNameByLogin(String memberid) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Member member = new Member();
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "SELECT * FROM t_member WHERE memberid=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberid);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				member.setName(rs.getString("name"));
+			}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				JDBCUtil.close(conn, pstmt, rs);
+			}
+		return member.getName();
+	}
+	
 	//아이디 체크
 	public boolean checkId(String memberid) {
 		Connection conn = null;

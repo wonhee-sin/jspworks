@@ -46,7 +46,7 @@
 		</div>
 	</div>
 	<div>
-		<form action="./updateProcess.do" method="post" name="regForm">
+		<form action="./updateMember.do" method="post" name="regForm">
 		<table class="tbl">
 			<tr>
 				<td>아이디</td>

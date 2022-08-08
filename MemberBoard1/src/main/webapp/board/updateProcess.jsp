@@ -16,5 +16,9 @@
 	
 	boardDAO.updateBoard(board);
 	
-	response.sendRedirect("./boardList.jsp");
+	out.println("<script>");
+	out.println("alert('수정이 완료되었습니다.')");
+	out.println("location.href='./boardList.jsp'");
+	out.println("</script>");
+
 %>

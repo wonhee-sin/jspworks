@@ -63,25 +63,29 @@ public class MainController extends HttpServlet {
 			member.setGender(gender);
 			memberDAO.addMember(member);
 			
-			nextPage = "/main.jsp";
+			request.setAttribute("msg", "register");
+			nextPage = "/memberResult.jsp";
 			}
 		}else if(command.equals("/loginMember.do")) {
 			nextPage="loginMember.jsp";
 		}else if(command.equals("/loginProcess.do")) {
 			String memberid = request.getParameter("memberid");
 			String passwd = request.getParameter("passwd");
+			String name = memberDAO.getNameByLogin(memberid);
 			
 			boolean loginResult = memberDAO.checkLogin(memberid, passwd);
 			if(loginResult) {
 				session.setAttribute("sessionId",memberid);
-				nextPage = "/main.jsp";
+				request.setAttribute("name", name);
+				request.setAttribute("msg", "login");
+				nextPage = "/memberResult.jsp";
 			}else {
 				nextPage = "/loginfail.jsp";
 			}
 		}else if(command.equals("/logout.do")) {
 			session.invalidate();
-
-			nextPage = "/main.jsp";
+			request.setAttribute("msg", "logout");
+			nextPage = "/memberResult.jsp";
 		}else if(command.equals("/memberView.do")) {
 			session = request.getSession();
 			String sessionId = (String)session.getAttribute("sessionId");
@@ -89,7 +93,7 @@ public class MainController extends HttpServlet {
 			
 			request.setAttribute("member", member);
 			nextPage="./memberView.jsp";
-		}else if(command.equals("/updateProcess.do")) {
+		}else if(command.equals("/updateMember.do")) {
 			String memberid = request.getParameter("memberid");
 			String passwd = request.getParameter("passwd");
 			String name = request.getParameter("name");
@@ -102,8 +106,9 @@ public class MainController extends HttpServlet {
 			memberDAO.memberUpdate(member);
 			
 			request.setAttribute("member", member);
-			nextPage="/memberView.do";
-		}else if(command.equals("/deleteProcess.do")) {
+			request.setAttribute("msg", "update");
+			nextPage="/memberResult.jsp";
+		}else if(command.equals("/deleteMember.do")) {
 			String memberid = request.getParameter("memberid");
 			
 			memberDAO.deleteMember(memberid);
@@ -114,6 +119,7 @@ public class MainController extends HttpServlet {
 		//포워딩 - 페이지 이동
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);
+		out.close();
 	}
 
 }

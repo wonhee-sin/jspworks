@@ -20,4 +20,43 @@
 	<url-pattern>/calc</url-pattern>
 </servlet-mapping>
   
+<filter>
+	<filter-name>Filter01</filter-name>
+	<filter-class>com.filter.AuthenFilter</filter-class>
+</filter>
+<filter-mapping>
+	<filter-name>Filter01</filter-name>
+	<url-pattern>/filter/filter01_process.jsp</url-pattern>
+</filter-mapping>
+
+
+<filter>
+	<filter-name>Filter02</filter-name>
+	<filter-class>com.filter.InitParamFilter</filter-class>
+	<init-param>
+		<param-name>param1</param-name>
+		<param-value>admin</param-value>
+	</init-param>
+	<init-param>
+		<param-name>param2</param-name>
+		<param-value>1234</param-value>
+	</init-param>
+</filter>
+<filter-mapping>
+	<filter-name>Filter02</filter-name>
+	<url-pattern>/filter/filter02_process.jsp</url-pattern>
+</filter-mapping>
+
+<filter>
+	<filter-name>Filter02_2</filter-name>
+	<filter-class>com.filter.LogFileFilter</filter-class>
+	<init-param>
+		<param-name>filename</param-name>
+		<param-value>c:\\log\\monitor.log</param-value>
+	</init-param>
+</filter>
+<filter-mapping>
+	<filter-name>Filter02_2</filter-name>
+	<url-pattern>/filter/filter02_process.jsp</url-pattern>
+</filter-mapping>
 </web-app>
