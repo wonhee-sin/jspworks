@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.repository.Board;
+import com.repository.BoardDAO;
 import com.repository.Member;
 import com.repository.MemberDAO;
 
@@ -22,9 +24,11 @@ public class MainController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	MemberDAO memberDAO;
+	BoardDAO boardDAO;
 
 	public void init(ServletConfig config) throws ServletException {
 		memberDAO = new MemberDAO();
+		boardDAO = new BoardDAO();
 	}
 
 
@@ -114,12 +118,61 @@ public class MainController extends HttpServlet {
 			memberDAO.deleteMember(memberid);
 			
 			nextPage = "/memberList.do";
+		}else if(command.equals("/boardList.do")) {
+			ArrayList<Board> boardList = boardDAO.getListAll();
+			
+			request.setAttribute("boardList", boardList);
+			
+			nextPage = "/board/boardList.jsp";
+		}else if(command.equals("/writeForm.do")) {
+				nextPage = "/board/writeForm.jsp";
+		}else if(command.equals("/writeProcess.do")) {
+			String memberid = (String)session.getAttribute("sessionId");
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			
+			Board board = new Board();
+			board.setTitle(title);
+			board.setContent(content);
+			board.setMemberid(memberid);
+			
+			boardDAO.insertBoard(board);
+			
+			nextPage = "/boardList.do";
+		}else if(command.equals("/boardView.do")) {
+			int bnum = Integer.parseInt(request.getParameter("bnum"));
+			
+			Board board = boardDAO.getBoard(bnum);
+			
+			request.setAttribute("board", board);
+			nextPage = "/board/boardView.jsp";
+		}else if(command.equals("/deleteBoard.do")) {
+			int bnum = Integer.parseInt(request.getParameter("bnum"));
+			
+			boardDAO.deleteBoard(bnum);
+			
+			request.setAttribute("msg", "bo_delete");
+			nextPage = "/memberResult.jsp";
+		}else if(command.equals("/updateBoard.do")) {
+			int bnum = Integer.parseInt(request.getParameter("bnum"));
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			
+			Board board = new Board();
+			board.setBnum(bnum);
+			board.setTitle(title);
+			board.setContent(content);
+			
+			boardDAO.updateBoard(board);
+			
+			request.setAttribute("msg", "bo_update");
+			nextPage = "/memberResult.jsp";
 		}
 		
 		//포워딩 - 페이지 이동
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);
-		out.close();
+		
 	}
 
 }

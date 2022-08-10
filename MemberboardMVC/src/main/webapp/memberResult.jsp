@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 정보</title>
-<link rel="stylesheet" href="./resources/css/common.css">
+<link rel="stylesheet" href="./resources/css/common.css?345325">
 </head>
 <body>
 	<jsp:include page="/menu.jsp"/>
@@ -27,6 +27,12 @@
 				</c:when>
 				<c:when test="${ msg eq 'logout' }">
 					<h2>로그아웃 되었습니다.</h2>
+				</c:when>
+				<c:when test="${ msg eq 'bo_delete' }">
+					<h2>게시물이 삭제되었습니다.</h2>
+				</c:when>
+				<c:when test="${ msg eq 'bo_update' }">
+					<h2>게시물이 수정되었습니다.</h2>
 				</c:when>
 			</c:choose>
 		</div>
