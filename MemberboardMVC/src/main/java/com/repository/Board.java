@@ -12,8 +12,15 @@ public class Board implements Serializable {
 	private String content;
 	private Date regDate;
 	private String memberid;
+	private int hit;
 	
 	
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
+	}
 	public int getBnum() {
 		return bnum;
 	}

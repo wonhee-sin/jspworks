@@ -142,6 +142,8 @@ public class MainController extends HttpServlet {
 		}else if(command.equals("/boardView.do")) {
 			int bnum = Integer.parseInt(request.getParameter("bnum"));
 			
+			boardDAO.updateHit(bnum);
+			
 			Board board = boardDAO.getBoard(bnum);
 			
 			request.setAttribute("board", board);

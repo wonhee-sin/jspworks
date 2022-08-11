@@ -27,6 +27,7 @@
 						<th>제목</th>
 						<th>작성일</th>
 						<th>글쓴이</th>
+						<th>조회수</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -34,9 +35,10 @@
 					<c:forEach var="board" items="${ boardList }">
 					<tr>
 						<td><c:out value="${ board.bnum }"/></td>
-						<td><a href="/board/boardView.do?bnum=${ board.bnum }"><c:out value="${ board.title }"></c:out></a></td>
+						<td><a href="/boardView.do?bnum=${ board.bnum }"><c:out value="${ board.title }"></c:out></a></td>
 						<td><fmt:formatDate value="${ board.regDate }" pattern="yyyy-MM-dd"/></td>
 						<td><c:out value="${ board.memberid }"/></td>
+						<td><c:out value="${ board.hit }"/></td>
 					</tr>	
 					</c:forEach>
 					

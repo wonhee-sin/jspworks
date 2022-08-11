@@ -155,7 +155,7 @@
       
       
       
-      <Context docBase="MemberboardMVC" path="/" reloadable="true" source="org.eclipse.jst.jee.server:MemberboardMVC"/></Host>
+      <Context docBase="WebMarket" path="/WebMarket" reloadable="true" source="org.eclipse.jst.jee.server:WebMarket"/></Host>
     </Engine>
   </Service>
 </Server>

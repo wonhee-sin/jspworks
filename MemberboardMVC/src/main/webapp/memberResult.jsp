@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 정보</title>
-<link rel="stylesheet" href="./resources/css/common.css?345325">
+<link rel="stylesheet" href="/resources/css/common.css">
 </head>
 <body>
 	<jsp:include page="/menu.jsp"/>
