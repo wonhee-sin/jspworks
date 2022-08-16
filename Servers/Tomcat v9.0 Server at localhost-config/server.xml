@@ -155,7 +155,7 @@
       
       
       
-      <Context docBase="WebMarket2" path="/" reloadable="true" source="org.eclipse.jst.jee.server:WebMarket2"/></Host>
+      <Context docBase="jweb" path="/jweb" reloadable="true" source="org.eclipse.jst.jee.server:jweb"/></Host>
     </Engine>
   </Service>
 </Server>
