@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Web Market</title>
-<link rel="stylesheet" href="./resources/CSS/bootstrap.css">
+<link rel="stylesheet" href="/resources/CSS/bootstrap.css">
 </head>
 <%
 	String cartId = session.getId();	//세션 아이디 값
@@ -26,10 +26,10 @@
 			<table style="width: 100%">
 				<tr>
 					<td align="left">
-						<a href="./deleteCart.jsp?cartId=<%=cartId %>" class="btn btn-danger">삭제하기</a>
+						<a href="/deleteCart.jsp?cartId=<%=cartId %>" class="btn btn-danger">삭제하기</a>
 					</td>
 					<td align="right">
-						<a href="./shippingInfo.jsp?cartId=<%=cartId %>" class="btn btn-success">주문하기</a>
+						<a href="/shippingInfo.jsp?cartId=<%=cartId %>" class="btn btn-success">주문하기</a>
 					</td>
 				</tr>
 			</table>
@@ -62,7 +62,7 @@
 					<td><%=product.getUnitPrice() %></td>
 					<td><%=product.getQuantity() %></td>
 					<td><%=total %></td>
-					<td><a href="./removeCart.jsp?id=<%=product.getProductId() %>"
+					<td><a href="/removeCart.jsp?id=<%=product.getProductId() %>"
 						   class="badge badge-danger">삭제</a></td>
 				</tr>
 				<%
@@ -76,7 +76,7 @@
 					<th></th>
 				</tr>
 			</table>
-			<a href="./products.jsp" class="btn btn-secondary">&laquo; 쇼핑 계속하기</a>
+			<a href="/products.jsp" class="btn btn-secondary">&laquo; 쇼핑 계속하기</a>
 		</div>
 	</div>
 	<%@ include file = "footer.jsp" %>

@@ -17,21 +17,9 @@ public class Product implements Serializable {
 	private String filename;		//이미지 파일명
 	private int quantity;
 	
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-	public void setUnitPrice(int unitPrice) {
-		this.unitPrice = unitPrice;
-	}
-
 	public Product() {} // 기본 생성장
 	
-	public Product(String productId, String pname, Integer unitPrice) {
+	public Product(String productId, String pname, int unitPrice) {
 		this.productId = productId;
 		this.pname = pname;
 		this.unitPrice = unitPrice;
@@ -53,11 +41,11 @@ public class Product implements Serializable {
 		this.pname = pname;
 	}
 
-	public Integer getUnitPrice() {
+	public int getUnitPrice() {
 		return unitPrice;
 	}
 
-	public void setUnitPrice(Integer unitPrice) {
+	public void setUnitPrice(int unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 
@@ -108,6 +96,16 @@ public class Product implements Serializable {
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	
 	
 	
 }

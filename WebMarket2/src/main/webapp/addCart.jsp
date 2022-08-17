@@ -47,5 +47,5 @@
 		list.add(good);
 	}
 	
-	response.sendRedirect("./product.jsp?id=" + id);
+	response.sendRedirect("/product.jsp?id=" + id);
 %>

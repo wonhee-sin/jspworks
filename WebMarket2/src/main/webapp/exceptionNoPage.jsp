@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Web Market</title>
-<link rel="stylesheet" href="./resources/CSS/bootstrap.css">
+<link rel="stylesheet" href="/resources/CSS/bootstrap.css">
 </head>
 <body>
 	<%@ include file = "menu.jsp" %>
@@ -18,7 +18,7 @@
 	
 	<div class="container">
 		<p><%=request.getRequestURL() %><%=request.getQueryString() %>
-		<p><a href="./products.jsp" class="btn btn-secondary">상품 목록</a>
+		<p><a href="/products.jsp" class="btn btn-secondary">상품 목록</a>
 	</div>
 </body>
 </html>
