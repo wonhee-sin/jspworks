@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>메인 페이지</title>
-<link rel="stylesheet" href="./resources/CSS/bootstrap.css">
+<link rel="stylesheet" href="./resources/css/bootstrap.css">
 </head>
 <body>
 	<jsp:include page="/menu.jsp"/>

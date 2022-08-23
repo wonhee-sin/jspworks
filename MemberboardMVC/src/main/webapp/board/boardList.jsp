@@ -45,6 +45,28 @@
 
 				</tbody>
 			</table>
+			<div style="margin-top: 10px; text-align:center">
+				<c:if test="${ startPage > 1 }">
+					<a href="/boardList.do?pageNum=<c:out value="${ startPage-1 }" />">이전</a>
+				</c:if>
+				<c:if test="${ startPage <= 1 }">
+					<a href="/boardList.do?pageNum=<c:out value="${ startPage }" />">이전</a>
+				</c:if>
+				<c:forEach var="i" begin="1" end="${ endPage }">
+					<c:if test="${ currentPage == i }">
+						<a href="/boardList.do?pageNum=<c:out value="${ i }" />"><b><c:out value="${ i }" /></b></a>
+					</c:if>
+					<c:if test="${ currentPage != i }">
+						<a href="/boardList.do?pageNum=<c:out value="${ i }" />"><c:out value="${ i }" /></a>
+					</c:if>
+				</c:forEach>
+				<c:if test="${ endPage > startPage }">
+					<a href="boardList.do?pageNum=<c:out value="${ startPage+1 }" />">다음</a>
+				</c:if>
+				<c:if test="${ endPage <= startPage }">
+					<a href="boardList.do?pageNum=<c:out value="${ endPage }" />">다음</a>
+				</c:if>
+			</div>
 			<div class="writeBtn">
 				<a href="/writeForm.do"><button type="button" >글쓰기</button></a>
 			</div>

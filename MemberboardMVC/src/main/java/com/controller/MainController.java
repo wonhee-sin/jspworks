@@ -119,9 +119,29 @@ public class MainController extends HttpServlet {
 			
 			nextPage = "/memberList.do";
 		}else if(command.equals("/boardList.do")) {
-			ArrayList<Board> boardList = boardDAO.getListAll();
+			String pageNum = request.getParameter("pageNum");
+			if(pageNum==null) {
+				pageNum = "1";
+			}
+			int currentPage = Integer.parseInt(pageNum);
+			
+			int pageSize = 8;
+			
+			int startRow = (currentPage-1)*pageSize + 1;
+			
+			int total = boardDAO.getBoardCount();
+			
+			int startPage = startRow / pageSize + 1;
+			
+			int endPage = (int)Math.ceil((double)total/pageSize);
+			
+			
+			ArrayList<Board> boardList = boardDAO.getListAll(startRow,pageSize);
 			
 			request.setAttribute("boardList", boardList);
+			request.setAttribute("currentPage", currentPage);
+			request.setAttribute("startPage", startPage);
+			request.setAttribute("endPage", endPage);
 			
 			nextPage = "/board/boardList.jsp";
 		}else if(command.equals("/writeForm.do")) {
